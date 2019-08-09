@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root,
+#root > div,
+div[data-reactroot] {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.formWrapper {
+  padding: 30px 100px 20px 100px;
+}
+
+.formHeader {
+  padding: 20px 0px 20px 0px;
+}
