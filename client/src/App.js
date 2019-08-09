@@ -1,7 +1,7 @@
 import React from "react";
-import Books from "./pages/Books/Books";
+import Form from "./pages/Books";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import About from "./pages/Books/About";
+import About from "./pages/About";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Wrapper from "./components/Wrapper";
@@ -15,7 +15,7 @@ function App() {
         <Wrapper>
           <Route exact path="/" component={About} />
           <Route exact path="/welcome" component={About} />
-          <Route exact path="/customize" component={Books} />
+          <Route exact path="/customize" component={Form} />
         </Wrapper>
         <Footer />
       </div>

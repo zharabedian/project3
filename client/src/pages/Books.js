@@ -8,7 +8,7 @@ import React, { Component } from "react";
 
 
 
-class Books extends Component {
+class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {serialNumber: "",
@@ -145,4 +145,4 @@ class Books extends Component {
 }
 
 
-export default Books;
+export default Form;
