@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import Jumbotron from "../../components/Jumbotron";
 // import DeleteBtn from "../../components/DeleteBtn";
-// import API from "../../utils/API";
+import API from "../utils/API";
 // import { Col, Row, Container } from "../../components/Grid";
 // import { List, ListItem } from "../../components/List";
 // import { Input, TextArea, FormBtn } from "../../components/Form";
@@ -11,31 +11,48 @@ import React, { Component } from "react";
 class Form extends Component {
   constructor(props) {
     super(props);
-    this.state = {serialNumber: "",
-    name: "",
-    address: "",
-    phoneNumber: "",
-    history: "",
-    medications: "",
-    allergies: "",
-    eContactName: "",
-    eContactPhoneNumber: "",
-    eContactEmail: ""};
+
+    this.state = {
+      serialNumber: "",
+      name: "",
+      address: "",
+      phoneNumber: "",
+      history: "",
+      medications: "",
+      allergies: "",
+      eContactName: "",
+      eContactPhoneNumber: "",
+      eContactEmail: ""
+    };
+
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  
+
 
   handleChange(event) {
-    this.setState({[event.target.name]: event.target.value});
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   handleSubmit(event) {
     console.log("the form worked!")
-    console.log(this.state.address);
     event.preventDefault();
     event.target.reset();
+    API.saveBook({
+      serialNumber: this.state.serialNumber,
+      name: this.state.name,
+      address: this.state.address,
+      phoneNumber: this.state.phoneNumber,
+      history: this.state.history,
+      medications: this.state.medications,
+      allergies: this.state.allergies,
+      eContactName: this.state.eContactName,
+      eContactPhoneNumber: this.state.eContactPhoneNumber,
+      eContactEmail: this.state.eContactEmail
+    })
+      .then(console.log(this.state.allergies))
+      .catch(err => console.log(err));
   }
 
   render() {
@@ -143,6 +160,5 @@ class Form extends Component {
     );
   }
 }
-
 
 export default Form;
