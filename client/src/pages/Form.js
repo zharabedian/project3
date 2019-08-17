@@ -44,7 +44,10 @@ class Form extends Component {
       eContactPhoneNumber: this.state.eContactPhoneNumber,
       eContactEmail: this.state.eContactEmail
     })
-      .then(console.log(this.state.allergies))
+      .then(
+        // console.log(this.state.allergies)
+        this.props.history.push('/')
+        )
       .catch(err => console.log(err));
   }
 
