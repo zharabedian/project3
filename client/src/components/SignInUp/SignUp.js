@@ -1,8 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { State } from 'react-powerplug';
-import { auth } from '../firebase';
-import * as routes from '../constants/routes';
+import { auth } from '../../firebase';
+import * as routes from '../../constants/routes';
 import "./sign.css"
 
 class SignUp extends React.Component {
