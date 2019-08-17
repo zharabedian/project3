@@ -8,8 +8,8 @@ import {
   Redirect,
 } from 'react-router-dom';
 import * as routes from './constants/routes';
-import SignUp from './components/SignUp';
-import SignIn from './components/SignIn';
+import SignUp from './components/SignInUp/SignUp';
+import SignIn from './components/SignInUp/SignIn';
 import { firebase, auth } from './firebase';
 import Form from "./pages/Form";
 import About from "./pages/About";
