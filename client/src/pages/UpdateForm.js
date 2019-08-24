@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 
-// var email = localStorage.getItem("email").replace("@",".");
-var email = localStorage.getItem("email");
+// import Jumbotron from "../components/Jumbotron";
+// import DeleteBtn from "../components/DeleteBtn";
+// // import API from "../../utils/API";
+// import { Col, Row, Container } from "../components/Grid";
+// import { List, ListItem } from "../components/List";
+// import { Input, TextArea, FormBtn } from "../../components/Form";
+
+// var email = localStorage.getItem("email");
 
 
 class Form extends Component {
@@ -20,13 +26,32 @@ class Form extends Component {
       eContactName: "",
       eContactPhoneNumber: "",
       eContactEmail: "",
-      email: email
+      // email: email,
+      id: ""
     };
 
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+    // // When the component mounts, load all books and save them to this.state.books
+    // componentDidMount() {
+    //   this.loadBooks(email);
+    //   // console.log(this.state.id);
+    // }
+  
+    // // Loads all books  and sets them to this.state.books
+    // loadBooks = email => {
+    //   API.getBook(email)
+    //     .then(function(res){
+    //       console.log("getting data back: " + res.data._id)
+    //       // this.setState({ id: res.data._id })
+    //     })
+
+    //     .catch(err => console.log(err));
+        
+    // };
 
 
   handleChange(event) {
@@ -35,10 +60,9 @@ class Form extends Component {
 
   handleSubmit(event) {
     console.log("the form worked!");
-    // console.log(email);
     event.preventDefault();
     event.target.reset();
-    API.saveBook({
+    API.updateBook({
       serialNumber: this.state.serialNumber,
       name: this.state.name,
       address: this.state.address,
@@ -48,8 +72,8 @@ class Form extends Component {
       allergies: this.state.allergies,
       eContactName: this.state.eContactName,
       eContactPhoneNumber: this.state.eContactPhoneNumber,
-      eContactEmail: this.state.eContactEmail,
-      email: email
+      eContactEmail: this.state.eContactEmail
+      // email: email
     })
       .then(
         this.props.history.push('/')
@@ -66,7 +90,7 @@ class Form extends Component {
           <div className="form-group">
             <div className="row">
               <div className="col">
-                <label>Button Serial Number</label>
+                <label>Update Serial Number</label>
                 <input type="text" className="form-control" name="serialNumber" onChange={this.handleChange} placeholder="Enter serial number"></input>
                 <small id="emailHelp" className="form-text text-muted">This is found on the bottom of the button with 4 numbers and 4 letters.</small>
               </div>
@@ -77,7 +101,7 @@ class Form extends Component {
           </div>
 
           {/* Name */}
-          <h5 className="formHeader">Button User's Information</h5>
+          <h5 className="formHeader">Update the Button User's Information</h5>
           <div className="form-group row">
             <label className="col-sm-2 col-form-label">Name</label>
             <div className="col-sm-10">
@@ -129,7 +153,7 @@ class Form extends Component {
           </div>
 
           {/* Emergency Contact Name */}
-          <h5 className="formHeader">Emergency Contact Information</h5>
+          <h5 className="formHeader">Update the Emergency Contact Information</h5>
           <div className="form-group row">
             <label className="col-sm-2 col-form-label">Name</label>
             <div className="col-sm-10">
@@ -156,8 +180,38 @@ class Form extends Component {
             </div>
           </div>
 
-          <button type="submit" className="btn btn-primary">Submit New Button Info</button>
+          <button type="submit" className="btn btn-primary">Update Your Button</button>
         </form>
+
+        {/* <Col size="md-6 sm-12">
+           <Jumbotron>
+             <h1>Books On My List</h1>
+           </Jumbotron>
+           {this.state.books.length ? (
+             <List>
+               {this.state.books.map(book => {
+                 return (
+                   <ListItem key={book._id}>
+                     <a href={"/books/" + book._id}>
+                       <strong>
+                         {book.name} by {book.address}
+                       </strong>
+                     </a>
+                     <DeleteBtn onClick={() => this.deleteBook(book._id)} />
+                   </ListItem>
+                 );
+               })}
+             </List>
+           ) : (
+             <h3>No Results to Display</h3>
+           )}
+         </Col>
+
+
+ */}
+
+
+
       </div>
     );
   }

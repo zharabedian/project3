@@ -11,6 +11,8 @@ class SignUp extends React.Component {
       .doCreateUserWithEmailAndPassword(email, password)
       .then(response => {
         console.log('Successful Sign Up', response);
+        var emailLocal = email;
+        localStorage.setItem("email", emailLocal);
         this.props.history.push(routes.HOME_PATH);
       })
       .catch(err => {
