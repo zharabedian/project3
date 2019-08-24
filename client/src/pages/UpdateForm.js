@@ -11,7 +11,7 @@ import API from "../utils/API";
 // var email = localStorage.getItem("email");
 
 
-class Form extends Component {
+class UpdateForm extends Component {
   constructor(props) {
     super(props);
 
@@ -92,10 +92,10 @@ class Form extends Component {
               <div className="col">
                 <label>Update Serial Number</label>
                 <input type="text" className="form-control" name="serialNumber" onChange={this.handleChange} placeholder="Enter serial number"></input>
-                <small id="emailHelp" className="form-text text-muted">This is found on the bottom of the button with 4 numbers and 4 letters.</small>
+                <small id="emailHelp" className="form-text text-muted">This is the DSN number. 16 characters</small>
               </div>
               <div className="col">
-                <img className="buttonPic" src="" alt="amazonButtonBack"></img>
+              <img className="buttonPic" src="https://i.imgur.com/cnI6HbN.png" style={{width: 400}} alt="amazonButton"></img>
               </div>
             </div>
           </div>
@@ -217,4 +217,4 @@ class Form extends Component {
   }
 }
 
-export default Form;
+export default UpdateForm;
