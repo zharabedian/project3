@@ -11,7 +11,8 @@ const bookSchema = new Schema({
   allergies: { type: String, required: true },
   eContactName: { type: String, required: true },
   eContactPhoneNumber: { type: String, required: true },
-  eContactEmail: { type: String, required: true }
+  eContactEmail: { type: String, required: true },
+  email: { type: String, required: true }
 });
 
 const Book = mongoose.model("Book", bookSchema);

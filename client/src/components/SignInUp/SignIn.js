@@ -11,6 +11,8 @@ class SignIn extends React.Component {
       .doSignInWithEmailAndPassword(email, password)
       .then(response => {
         console.log('Successful Sign In', response);
+        var emailLocal = email;
+          localStorage.setItem("email", emailLocal);
         this.props.history.push(routes.HOME_PATH);
       })
       .catch(err => {

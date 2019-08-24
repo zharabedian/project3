@@ -13,6 +13,7 @@ import SignIn from './components/SignInUp/SignIn';
 import { firebase, auth } from './firebase';
 import Form from "./pages/Form";
 import About from "./pages/About";
+import UpdateForm from "./pages/UpdateForm"
 
 class SignOut extends React.Component {
   signOut = e => {
@@ -47,7 +48,11 @@ const AuthenticatedNavigation = () => {
         </li>
         <li>
         <Link to="/customize" className={window.location.pathname === "/customize"}>
-          Customize Your Button</Link>
+          Customize Your New Button</Link>
+      </li>
+      <li>
+        <Link to="/update" className={window.location.pathname === "/update"}>
+          Update Your Registered Button</Link>
       </li>
     </React.Fragment>
   );
@@ -124,7 +129,8 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={About} />
               <Route exact path="/welcome" component={About} />
-              <Route exact path="/customize" component={Form} /> 
+              <Route exact path="/customize" component={Form} />
+              <Route exact path="/update" component={UpdateForm} /> 
               <Route exact path={routes.SIGN_UP_PATH} component={SignUp} />
               <Route exact path={routes.SIGN_IN_PATH} component={SignIn} />
               <Route exact path={routes.SIGN_OUT_PATH} component={SignOut} />
