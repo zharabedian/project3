@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 
-// var email = localStorage.getItem("email").replace("@",".");
-// var email = localStorage.getItem("email");
+var email = localStorage.getItem("email");
 
 
 class Form extends Component {
@@ -20,7 +19,7 @@ class Form extends Component {
       eContactName: "",
       eContactPhoneNumber: "",
       eContactEmail: "",
-      email: "hardcoded@test.com"
+      email: email
     };
 
 
@@ -49,7 +48,7 @@ class Form extends Component {
       eContactName: this.state.eContactName,
       eContactPhoneNumber: this.state.eContactPhoneNumber,
       eContactEmail: this.state.eContactEmail,
-      email: this.state.email
+      email: localStorage.getItem("email")
     })
       .then(
         this.props.history.push('/')

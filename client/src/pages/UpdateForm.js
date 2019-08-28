@@ -8,7 +8,7 @@ import API from "../utils/API";
 // import { List, ListItem } from "../components/List";
 // import { Input, TextArea, FormBtn } from "../../components/Form";
 
-// var email = localStorage.getItem("email");
+var email = localStorage.getItem("email");
 
 
 class UpdateForm extends Component {
@@ -26,7 +26,7 @@ class UpdateForm extends Component {
       eContactName: "",
       eContactPhoneNumber: "",
       eContactEmail: "",
-      // email: email,
+      email: email,
       id: ""
     };
 
@@ -35,23 +35,23 @@ class UpdateForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-    // // When the component mounts, load all books and save them to this.state.books
-    // componentDidMount() {
-    //   this.loadBooks(email);
-    //   // console.log(this.state.id);
-    // }
+    // When the component mounts, load all books and save them to this.state.books
+    componentDidMount() {
+      this.loadBooks(this.state.email);
+      // console.log(this.state.id);
+    }
   
-    // // Loads all books  and sets them to this.state.books
-    // loadBooks = email => {
-    //   API.getBook(email)
-    //     .then(function(res){
-    //       console.log("getting data back: " + res.data._id)
-    //       // this.setState({ id: res.data._id })
-    //     })
-
-    //     .catch(err => console.log(err));
+    // Loads all books
+    loadBooks = email => {
+      API.getBook(email)
+        .then(function(res){
+          console.log(res);
+          // console.log("getting data back: " + res.data)
+          // this.setState({ id: res.data._id })
+        })
+        .catch(err => console.log(err));
         
-    // };
+    };
 
 
   handleChange(event) {
@@ -59,7 +59,7 @@ class UpdateForm extends Component {
   }
 
   handleSubmit(event) {
-    console.log("the form worked!");
+    console.log("the form updated!");
     event.preventDefault();
     event.target.reset();
     API.updateBook({
@@ -72,8 +72,8 @@ class UpdateForm extends Component {
       allergies: this.state.allergies,
       eContactName: this.state.eContactName,
       eContactPhoneNumber: this.state.eContactPhoneNumber,
-      eContactEmail: this.state.eContactEmail
-      // email: email
+      eContactEmail: this.state.eContactEmail,
+      email: this.state.email
     })
       .then(
         this.props.history.push('/')
@@ -105,7 +105,7 @@ class UpdateForm extends Component {
           <div className="form-group row">
             <label className="col-sm-2 col-form-label">Name</label>
             <div className="col-sm-10">
-              <input type="text" className="form-control" id="inputEmail3" name="name" onChange={this.handleChange} placeholder="Enter your name"></input>
+              <input type="text" className="form-control" name="name" onChange={this.handleChange} placeholder="Enter your name"></input>
               <small id="emailHelp" className="form-text text-muted">This is the name of the person who will be using the button.</small>
             </div>
           </div>
@@ -114,7 +114,7 @@ class UpdateForm extends Component {
           <div className="form-group row">
             <label className="col-sm-2 col-form-label">Address</label>
             <div className="col-sm-10">
-              <input type="text" className="form-control" id="inputEmail3" name="address" onChange={this.handleChange} placeholder="e.g. 14 Locust Drive, Ringwood, NJ"></input>
+              <input type="text" className="form-control" name="address" onChange={this.handleChange} placeholder="e.g. 14 Locust Drive, Ringwood, NJ"></input>
               <small id="emailHelp" className="form-text text-muted">This is the address of the person who will be using the button.</small>
             </div>
           </div>
@@ -123,7 +123,7 @@ class UpdateForm extends Component {
           <div className="form-group row">
             <label className="col-sm-2 col-form-label">Phone number</label>
             <div className="col-sm-10">
-              <input type="text" className="form-control" id="inputEmail3" name="phoneNumber" onChange={this.handleChange} placeholder="xxx-xxx-xxxx"></input>
+              <input type="text" className="form-control" name="phoneNumber" onChange={this.handleChange} placeholder="xxx-xxx-xxxx"></input>
               <small id="emailHelp" className="form-text text-muted">This is the phone number of the person who will be using the button.</small>
             </div>
           </div>
@@ -132,7 +132,7 @@ class UpdateForm extends Component {
           <div className="form-group row">
             <label className="col-sm-2 col-form-label">Medical history</label>
             <div className="col-sm-10">
-              <input type="text" className="form-control" name="history" onChange={this.handleChange} id="inputEmail3"></input>
+              <input type="text" className="form-control" name="history" onChange={this.handleChange}></input>
             </div>
           </div>
 
@@ -140,7 +140,7 @@ class UpdateForm extends Component {
           <div className="form-group row">
             <label className="col-sm-2 col-form-label">Medications</label>
             <div className="col-sm-10">
-              <input type="text" className="form-control" name="medications" onChange={this.handleChange} id="inputEmail3"></input>
+              <input type="text" className="form-control" name="medications" onChange={this.handleChange} ></input>
             </div>
           </div>
 
@@ -148,7 +148,7 @@ class UpdateForm extends Component {
           <div className="form-group row">
             <label className="col-sm-2 col-form-label">Allergies</label>
             <div className="col-sm-10">
-              <input type="text" className="form-control" name="allergies" onChange={this.handleChange} id="inputEmail3"></input>
+              <input type="text" className="form-control" name="allergies" onChange={this.handleChange}></input>
             </div>
           </div>
 
@@ -157,7 +157,7 @@ class UpdateForm extends Component {
           <div className="form-group row">
             <label className="col-sm-2 col-form-label">Name</label>
             <div className="col-sm-10">
-              <input type="text" className="form-control" id="inputEmail3" name="eContactName" onChange={this.handleChange} placeholder="Enter name"></input>
+              <input type="text" className="form-control" name="eContactName" onChange={this.handleChange} placeholder="Enter name"></input>
               <small id="emailHelp" className="form-text text-muted">This is the name of the primary emergency contact.</small>
             </div>
           </div>
@@ -166,7 +166,7 @@ class UpdateForm extends Component {
           <div className="form-group row">
             <label className="col-sm-2 col-form-label">Phone number</label>
             <div className="col-sm-10">
-              <input type="text" className="form-control" id="inputEmail3" name="eContactPhoneNumber" onChange={this.handleChange} placeholder="xxx-xxx-xxxx"></input>
+              <input type="text" className="form-control" name="eContactPhoneNumber" onChange={this.handleChange} placeholder="xxx-xxx-xxxx"></input>
               <small id="emailHelp" className="form-text text-muted">This is the phone number of the primary emergency contact.</small>
             </div>
           </div>
@@ -175,7 +175,7 @@ class UpdateForm extends Component {
           <div className="form-group row">
             <label className="col-sm-2 col-form-label">Email</label>
             <div className="col-sm-10">
-              <input type="email" className="form-control" id="inputEmail3" name="eContactEmail" onChange={this.handleChange} placeholder="Enter email"></input>
+              <input type="email" className="form-control" name="eContactEmail" onChange={this.handleChange} placeholder="Enter email"></input>
               <small id="emailHelp" className="form-text text-muted">This is the email address of the primary emergency contact.</small>
             </div>
           </div>
