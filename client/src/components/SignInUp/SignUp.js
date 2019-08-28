@@ -11,9 +11,7 @@ class SignUp extends React.Component {
       .doCreateUserWithEmailAndPassword(email, password)
       .then(response => {
         console.log('Successful Sign Up', response);
-        // Need to remove @ sign 
-        var emailLocal = email;
-        localStorage.setItem("email", emailLocal);
+        
         this.props.history.push(routes.HOME_PATH);
       })
       .catch(err => {
@@ -38,6 +36,7 @@ class SignUp extends React.Component {
             this.handleSubmit({
               email: state.email,
               password: state.password,
+              
             }).catch(err => {
               setState({ error: err.message });
             });
@@ -58,7 +57,7 @@ class SignUp extends React.Component {
                 <div className="form-group row">
                   <label htmlFor="email" className="col-sm-2 col-form-label">Email</label>
                   <div className="col-sm-10">
-                    <input type="text" className="form-control" id="inputEmail3" name="email" value={state.email} onChange={onEmailChange}></input>
+                    <input type="text" className="form-control"  name="email" value={state.email} onChange={onEmailChange}></input>
                   </div>
                 </div>
 
@@ -66,7 +65,7 @@ class SignUp extends React.Component {
                 <div className="form-group row">
                   <label htmlFor="password" className="col-sm-2 col-form-label">Password</label>
                   <div className="col-sm-10">
-                    <input type="password" className="form-control" id="inputEmail3" name="password" value={state.password} onChange={onPasswordChange}></input>
+                    <input type="password" className="form-control"  name="password" value={state.password} onChange={onPasswordChange}></input>
                   </div>
                   <button type="submit" className="btn btn-primary">Sign Up</button>
                 </div>
