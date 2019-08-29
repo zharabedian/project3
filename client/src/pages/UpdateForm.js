@@ -1,14 +1,6 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 
-// import Jumbotron from "../components/Jumbotron";
-// import DeleteBtn from "../components/DeleteBtn";
-// // import API from "../../utils/API";
-// import { Col, Row, Container } from "../components/Grid";
-// import { List, ListItem } from "../components/List";
-// import { Input, TextArea, FormBtn } from "../../components/Form";
-
-var email = localStorage.getItem("email");
 
 
 class UpdateForm extends Component {
@@ -26,7 +18,7 @@ class UpdateForm extends Component {
       eContactName: "",
       eContactPhoneNumber: "",
       eContactEmail: "",
-      email: email,
+      email: localStorage.getItem("email"),
       id: ""
     };
 
@@ -38,7 +30,6 @@ class UpdateForm extends Component {
     // When the component mounts, load all books and save them to this.state.books
     componentDidMount() {
       this.loadBooks(this.state.email);
-      // console.log(this.state.id);
     }
   
     // Loads all books
@@ -46,8 +37,6 @@ class UpdateForm extends Component {
       API.getBook(email)
         .then(function(res){
           console.log(res);
-          // console.log("getting data back: " + res.data)
-          // this.setState({ id: res.data._id })
         })
         .catch(err => console.log(err));
         

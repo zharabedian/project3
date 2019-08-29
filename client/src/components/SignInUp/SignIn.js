@@ -11,10 +11,10 @@ class SignIn extends React.Component {
       .doSignInWithEmailAndPassword(email, password)
       .then(response => {
         console.log('Successful Sign In', response);
+        localStorage.clear(); 
         var emailLocal = email.replace("@",".");
         var emailLocalCleaned = emailLocal.replace(".","");
         var emailLocalCleanedAgain = emailLocalCleaned.replace(".","");
-        localStorage.clear();  
         localStorage.setItem("email", emailLocalCleanedAgain);
         this.props.history.push(routes.HOME_PATH);
       })
