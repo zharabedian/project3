@@ -20,7 +20,10 @@ function About() {
         <Row>
           <Col size="md-12">
             <p>
-              Here we will describe the button. 
+              Zel Button keeps you safe in any situation, and is completely customizable to fit your specific needs. 
+            </p>
+            <p>
+              Go to "Sign Up" if you've just received your new Zel Button. "Sign In" if you've registered your button and need to make changes.
             </p>
           </Col>
         </Row>

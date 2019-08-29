@@ -11,7 +11,11 @@ class SignUp extends React.Component {
       .doCreateUserWithEmailAndPassword(email, password)
       .then(response => {
         console.log('Successful Sign Up', response);
-        
+        localStorage.clear(); 
+        var emailLocal = email.replace("@",".");
+        var emailLocalCleaned = emailLocal.replace(".","");
+        var emailLocalCleanedAgain = emailLocalCleaned.replace(".","");
+        localStorage.setItem("email", emailLocalCleanedAgain);
         this.props.history.push(routes.HOME_PATH);
       })
       .catch(err => {

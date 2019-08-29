@@ -25,6 +25,7 @@ class SignOut extends React.Component {
       .doSignOut()
       .then(response => {
         console.log('successfully signed out', response);
+        localStorage.clear();  
       })
       .catch(err => {
         console.log('failed to sign out', err);
