@@ -19,7 +19,7 @@ class UpdateForm extends Component {
       eContactPhoneNumber: "",
       eContactEmail: "",
       email: localStorage.getItem("email"),
-      id: ""
+      _id: ""
     };
 
 
@@ -35,10 +35,16 @@ class UpdateForm extends Component {
     // Loads all books
     loadBooks = email => {
       API.getBook(email)
-        .then(function(res){
-          console.log(res);
+      .then((res) => {
+        // .then(function(res){
+          // console.log(res.data._id);
+          this.setState({_id: res.data._id});
+          console.log(this.state._id);
+          
         })
+        
         .catch(err => console.log(err));
+        
         
     };
 
@@ -47,11 +53,13 @@ class UpdateForm extends Component {
     this.setState({ [event.target.name]: event.target.value });
   }
 
+
   handleSubmit(event) {
-    console.log("the form updated!");
+    console.log("the update form updated!");
+    console.log(this.state._id);
     event.preventDefault();
     event.target.reset();
-    API.updateBook({
+    API.updateBook(this.state._id,{
       serialNumber: this.state.serialNumber,
       name: this.state.name,
       address: this.state.address,
@@ -61,8 +69,7 @@ class UpdateForm extends Component {
       allergies: this.state.allergies,
       eContactName: this.state.eContactName,
       eContactPhoneNumber: this.state.eContactPhoneNumber,
-      eContactEmail: this.state.eContactEmail,
-      email: this.state.email
+      eContactEmail: this.state.eContactEmail
     })
       .then(
         this.props.history.push('/')
@@ -171,36 +178,6 @@ class UpdateForm extends Component {
 
           <button type="submit" className="btn btn-primary">Update Your Button</button>
         </form>
-
-        {/* <Col size="md-6 sm-12">
-           <Jumbotron>
-             <h1>Books On My List</h1>
-           </Jumbotron>
-           {this.state.books.length ? (
-             <List>
-               {this.state.books.map(book => {
-                 return (
-                   <ListItem key={book._id}>
-                     <a href={"/books/" + book._id}>
-                       <strong>
-                         {book.name} by {book.address}
-                       </strong>
-                     </a>
-                     <DeleteBtn onClick={() => this.deleteBook(book._id)} />
-                   </ListItem>
-                 );
-               })}
-             </List>
-           ) : (
-             <h3>No Results to Display</h3>
-           )}
-         </Col>
-
-
- */}
-
-
-
       </div>
     );
   }

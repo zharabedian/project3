@@ -25,7 +25,7 @@ class SignOut extends React.Component {
       .doSignOut()
       .then(response => {
         console.log('successfully signed out', response);
-        localStorage.clear();  
+        localStorage.clear();
       })
       .catch(err => {
         console.log('failed to sign out', err);
@@ -46,15 +46,30 @@ const AuthenticatedNavigation = () => {
     <React.Fragment>
       <li className="navitems">
         <Link to={routes.SIGN_OUT_PATH}>Sign Out</Link>
-        </li>
-        <li>
+      </li>
+      <li>
+        {/* {(localStorage.getItem("repeatUser") !== 1) ? ( */}
         <Link to="/customize" className={window.location.pathname === "/customize"}>
           Customize Your New Button</Link>
+        {/* ) : ( */}
+
+        {/* )} */}
+
       </li>
       <li>
         <Link to="/update" className={window.location.pathname === "/update"}>
           Update Your Registered Button</Link>
       </li>
+
+
+
+
+
+
+
+
+
+
     </React.Fragment>
   );
 };
@@ -79,19 +94,19 @@ const Navigation = () => {
       <Link className="navbar-brand" to="/">
         Zel Button
       </Link>
-          <AuthContext.Consumer>
-            {({ authUser }) =>
-              <nav>
-                <ul>
-                  <li className="navitems">
-                    <Link to={routes.HOME_PATH}>Home</Link>
-                  </li>
-                  {authUser && <AuthenticatedNavigation />}
-                  {!authUser && <UnauthenticatedNavigation />}
+      <AuthContext.Consumer>
+        {({ authUser }) =>
+          <nav>
+            <ul>
+              <li className="navitems">
+                <Link to={routes.HOME_PATH}>Home</Link>
+              </li>
+              {authUser && <AuthenticatedNavigation />}
+              {!authUser && <UnauthenticatedNavigation />}
 
-                </ul>
-              </nav>}
-          </AuthContext.Consumer>
+            </ul>
+          </nav>}
+      </AuthContext.Consumer>
     </nav>
   );
 };
@@ -131,7 +146,7 @@ class App extends Component {
               <Route exact path="/" component={About} />
               <Route exact path="/welcome" component={About} />
               <Route exact path="/customize" component={Form} />
-              <Route exact path="/update" component={UpdateForm} /> 
+              <Route exact path="/update" component={UpdateForm} />
               <Route exact path={routes.SIGN_UP_PATH} component={SignUp} />
               <Route exact path={routes.SIGN_IN_PATH} component={SignIn} />
               <Route exact path={routes.SIGN_OUT_PATH} component={SignOut} />
