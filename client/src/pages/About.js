@@ -14,7 +14,7 @@ function About() {
       <Container style={{ marginTop: 30 }}>
         <Row>
           <Col size="md-12">
-            <h1>Welcome To Zel Button!</h1>
+            <h3>Welcome To Zel Button</h3>
           </Col>
         </Row>
         <Row>

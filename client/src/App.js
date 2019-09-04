@@ -90,9 +90,11 @@ const UnauthenticatedNavigation = () => {
 const Navigation = () => {
   return (
 
-    <nav className="navbar navbar-expand-lg navbar-light bg-light navitems">
+    <nav className="navbar navbar-expand-lg navitems">
       <Link className="navbar-brand" to="/">
+      <img src="https://i.imgur.com/uRDd2Pw.png" width="30" height="30" alt=""></img>
         Zel Button
+        
       </Link>
       <AuthContext.Consumer>
         {({ authUser }) =>
@@ -103,7 +105,7 @@ const Navigation = () => {
               </li>
               {authUser && <AuthenticatedNavigation />}
               {!authUser && <UnauthenticatedNavigation />}
-
+              
             </ul>
           </nav>}
       </AuthContext.Consumer>

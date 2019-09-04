@@ -12,9 +12,13 @@ nav ul li {
 }
 
 .navitems {
-  color: black;
+  color: white;
 }
 
 a {
-  color: black;
+  color: white;
+}
+
+.navbar-brand {
+  color: #66cfff;
 }
