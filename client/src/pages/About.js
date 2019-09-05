@@ -3,10 +3,11 @@ import Hero from "../components/Hero";
 import Container from "../components/Container";
 import Row from "../components/Row";
 import Col from "../components/Col";
+import "./Form.css";
 
 function About() {
   return (
-    <div>
+    <div className="backgroundTest">
       <Hero backgroundImage="https://static.onecms.io/wp-content/uploads/sites/35/2019/06/27205558/woman-running-alone-wide.jpg">
         <h1>Zel Button</h1>
         <h2>Safety in any situation.</h2>
